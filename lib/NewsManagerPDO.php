@@ -46,7 +46,7 @@ public function delete($id) {
 
 protected function update(News $news)
   {
-    $requete = $this->db->prepare('UPDATE news SET auteur = :auteur, titre = :titre, contenu = :contenu, dateModif = NOW() WHERE id = :id');
+    $requete = $this->bdd->prepare('UPDATE news SET auteur = :auteur, titre = :titre, contenu = :contenu, dateModif = NOW() WHERE id = :id');
     
     $requete->bindValue(':titre', $news->titre());
     $requete->bindValue(':auteur', $news->auteur());
@@ -60,7 +60,7 @@ protected function update(News $news)
 
    public function getUnique($id)
   {
-    $requete = $this->db->prepare('SELECT id, auteur, titre, contenu, dateAjout, dateModif FROM news WHERE id = :id');
+    $requete = $this->bdd->prepare('SELECT id, auteur, titre, contenu, dateAjout, dateModif FROM news WHERE id = :id');
     $requete->bindValue(':id', (int) $id, PDO::PARAM_INT);
     $requete->execute();
     
