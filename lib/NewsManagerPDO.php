@@ -1,6 +1,6 @@
 <?php 
 
-class NewManagerPDO extends NewsManager {
+class NewsManagerPDO extends NewsManager {
 
 
 	protected $bdd; 

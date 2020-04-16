@@ -1,20 +1,10 @@
-<?php 
-
-function autoload($classname){
-
-	if (file_exists($file='classes/'.$classname.'.php'))
-		{
-
-			require $file; 
-		}else 
-
-		{
-			echo "erreur de pages";
-		}
-
-
+<?php
+function autoload($classname)
+{
+  if (file_exists($file = __DIR__ . '/' . $classname . '.php'))
+  {
+    require $file;
+  }
 }
 
-spl_autoload_register('autoload'); 
-
-?>
+spl_autoload_register('autoload');

@@ -1,6 +1,6 @@
 <?php 
-require 'lib/autoload.php'; 
-$bdd = DBFactory::getMysqlConnexionWhitPDO(); 
+require './lib/autoload.php'; 
+$bdd = DBFactory::getMysqlConnexionWithPDO();
 $manager = new NewsManagerPDO($bdd); 
 
 ?>
