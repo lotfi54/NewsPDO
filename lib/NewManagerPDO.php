@@ -25,6 +25,16 @@ protected function add(News $news) {
 }
 
 
+// on ajoute une methode count() qui sert renvoyer le nmbre de news total 
+
+public function count()
+
+{
+	return $this->bdd->query('SELECT COUNT(*) FROM news')->fetchColumn(); 
+}
+
+
+
 
 
 
