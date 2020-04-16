@@ -13,6 +13,8 @@ $manager = new NewsManagerPDO($bdd);
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+
+
 <?php 
 
 if (isset($_GET['id']))
@@ -33,6 +35,9 @@ if (isset($_GET['id']))
 {
   echo '<div class="container"><h2 style="text-align:center">Liste des 5 dernières news</h2></div>';
   ?>
+  <div class="container mt-5">
+  	<a href="admin.php"><button class="btn btn-primary">Ajoutr une news</button></a>
+  </div>
   <div class="container mt-5">
 
     <div class="row">
