@@ -11,3 +11,7 @@
     padding: 12px;
     /* width: 10%; */
 }
+
+.error {
+	color: red;
+}
