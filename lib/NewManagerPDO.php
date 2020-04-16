@@ -57,8 +57,6 @@ protected function update(News $news)
   }
 
 
-// ajouter une methode getUnique qui permet d'afficher une news précise 
-
 
    public function getUnique($id)
   {
@@ -75,7 +73,34 @@ protected function update(News $news)
     
     return $news;
   }
-  
+
+
+ public function getList($debut = -1, $limite = -1)
+  {
+    $sql = 'SELECT id, auteur, titre, contenu, dateAjout, dateModif FROM news ORDER BY id DESC';
+    
+
+    if ($debut != -1 || $limite != -1)
+    {
+      $sql .= ' LIMIT '.(int) $limite.' OFFSET '.(int) $debut;
+    }
+    
+    $requete = $this->bdd->query($sql);
+    $requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'News');
+    
+    $listeNews = $requete->fetchAll();
+
+
+    foreach ($listeNews as $news)
+    {
+      $news->setDateAjout(new DateTime($news->dateAjout()));
+      $news->setDateModif(new DateTime($news->dateModif()));
+    }
+    
+    $requete->closeCursor();
+    
+    return $listeNews;
+  }
 
 
 }
