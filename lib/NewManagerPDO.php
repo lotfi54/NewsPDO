@@ -34,7 +34,11 @@ public function count()
 }
 
 
+// On ajourz une methode delete 
 
+public function delete($id) {
+	$this->bdd->exec('DELETE FROM news WHERE id='.(int)$id); 
+}
 
 
 
