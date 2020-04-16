@@ -57,8 +57,25 @@ protected function update(News $news)
   }
 
 
+// ajouter une methode getUnique qui permet d'afficher une news précise 
 
 
+   public function getUnique($id)
+  {
+    $requete = $this->db->prepare('SELECT id, auteur, titre, contenu, dateAjout, dateModif FROM news WHERE id = :id');
+    $requete->bindValue(':id', (int) $id, PDO::PARAM_INT);
+    $requete->execute();
+    
+    $requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'News');
+
+    $news = $requete->fetch();
+
+    $news->setDateAjout(new DateTime($news->dateAjout()));
+    $news->setDateModif(new DateTime($news->dateModif()));
+    
+    return $news;
+  }
+  
 
 
 }
